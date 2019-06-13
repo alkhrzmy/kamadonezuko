@@ -14,7 +14,7 @@ from time import time
 
 my_id = "694351915"
 bot = telegram.Bot(token="844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
-updater = Updater("844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
+
 
 print("### Running ###")
 print("_+ Username: " + bot.get_me()['username'])
@@ -41,7 +41,7 @@ def error(update, context):
 
 
 def main():
-  updater = Updater("844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
+  updater = Updater("844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30", use_context=True)
   dp = updater.dispatcher
   
   # on different commands - answer in Telegram
