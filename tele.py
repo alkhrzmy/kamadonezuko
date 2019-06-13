@@ -25,7 +25,25 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
+def main():
+  updater = Updater("844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
+  dp = updater.dispatcher
+  
+  # on different commands - answer in Telegram
+  dp.add_handler(CommandHandler("start", start))
+  dp.add_handler(CommandHandler("help", help))
+  
+  # on noncommand i.e message - echo the message on Telegram
+  dp.add_handler(MessageHandler(Filters.text, echo))
 
+  # log all errors
+  dp.add_error_handler(error)
+
+  # Start the Bot
+  updater.start_polling()
+  
+  # start_polling() is non-blocking and will stop the bot gracefully.
+  updater.idle()
 
 
 
