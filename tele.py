@@ -9,7 +9,7 @@ Sample bot t.me/kamadobot
 import logging
 import telegram
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-from telebot import types
+
 from time import time
 
 my_id = "694351915"
