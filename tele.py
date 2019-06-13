@@ -13,7 +13,8 @@ from telebot import types
 from time import time
 
 my_id = "694351915"
-bot = telebot.Bot(token="844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
+bot = telegram.Bot(token="844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
+updater = Updater("844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
 
 print("### Running ###")
 print("_+ Username: " + bot.get_me()['username'])
@@ -24,6 +25,20 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
+
+def start(update, context):
+  update.message.reply_text('Started!')
+
+def help(update, context):
+  update.message.reply_text('Soon!')
+  
+def echo(update, context):
+  update.message.reply_text(update.message.text)
+  
+def error(update, context):
+    """Log Errors caused by Updates."""
+    logger.warning('Update "%s" caused error "%s"', update, context.error)
+
 
 def main():
   updater = Updater("844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
