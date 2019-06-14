@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 '''
@@ -7,59 +6,28 @@ Kamado nezuko-chan bot
 Sample bot t.me/kamadobot
 
 '''
-import logging
-import telegram
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import telepot
+import time
+from telepot.loop import MessageLoop
 
-from time import time
+token = "844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30"
+bot = telepot.Bot(token)
+my_id = '694351915'
 
-my_id = "694351915"
-bot = telegram.Bot(token="844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
+def handle(self):
+        # print(self)
+        content_type, chat_type, chat_id = telepot.glance(self)
 
+        print("_+ Message arrived: " + self['text'])
+        command = msg['text'].strip().lower()
+        if command ==  '/start':
+          self.sendMessage(chat_id, "Hi! thanks for your message. This bot still in developing mode")
+        else:
+          self.sender.sendMessage(chat_id, "Hi! thanks for your message. Your message is " + self['text'])
 
-print("### Running ###")
-print("_+ Username: " + bot.get_me()['username'])
-bot.send_message(my_id, '[Notify] Bot Running\nt.me/kamadobot')
+MessageLoop(bot, handle).run_as_thread()
+print ('Running...')
 
-# Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
-
-logger = logging.getLogger(__name__)
-
-  
-def error(update, context):
-    """Log Errors caused by Updates."""
-    logger.warning('Update "%s" caused error "%s"', update, context.error)
-
-
-def main():
-  # global bot
-  updater = Updater(token="844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
-  disp = updater.dispatcher
-  
-  
-  id_chat = bot.get_updates()[0]['message']['chat']['id']
-  '''
-  cmd = bot.get_updates()[0]
-  if cmd == '/start':
-    bot.send_message(id_chat, "Hi! This bot still in developing by creator, please don't use this bot")
-  elif cmd == 'test':
-    bot.send_message(id_chat, "masuk")
-  else:
-    disp.add_error_handler(error)
-  '''
-  disp.add_handler(CommmandHandler("start", bot.sendMessage(chat_id=updater.message.chat_id, 'Hi!')
-  updater.start_polling()
-  updater.idle()
-
-
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    main()
+# Keep the program running.
+while 1:
+    time.sleep(1)
