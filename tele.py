@@ -27,14 +27,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-def start(update, context):
-  update.message.reply_text('Started!')
-
-def help(update, context):
-  update.message.reply_text('Soon!')
-  
-def echo(update, context):
-  update.message.reply_text(update.message.text)
   
 def error(update, context):
     """Log Errors caused by Updates."""
@@ -42,8 +34,20 @@ def error(update, context):
 
 
 def main():
+  # global bot
+  updater = telegram.ext.Updater(token="844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30")
+  disp = telegram.ext.dispatcher
   
-
+  cmd = bot.get_updates()[0]
+  id_chat = bot.get_updates()[0]['message']['chat']['id']
+  if cmd == '/start':
+    bot.send_message(id_chat, "Hi! This bot still in developing by creator, please don't use this bot")
+  elif cmd == 'test':
+    bot.send_message(id_chat, "masuk")
+    
+  updater.start_polling()
+  disp.add_error_handler(error)
+  updater.idle()
 
 
 
