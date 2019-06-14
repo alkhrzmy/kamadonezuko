@@ -49,7 +49,7 @@ def main():
   else:
     disp.add_error_handler(error)
   '''
-  disp.add_handler(CommmandHandler("start", bot.sendMessage(id_chat, 'Hi!')
+  disp.add_handler(CommmandHandler("start", bot.sendMessage(chat_id=updater.message.chat_id, 'Hi!')
   updater.start_polling()
   updater.idle()
 
