@@ -6,6 +6,7 @@ Kamado nezuko-chan bot
 Sample bot t.me/kamadobot
 
 '''
+import flask import Flask, request
 import telepot
 import time
 from telepot.loop import MessageLoop, OrderedWebhook
@@ -13,7 +14,7 @@ from telepot.loop import MessageLoop, OrderedWebhook
 token = "844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30"
 bot = telepot.Bot(token)
 my_id = '694351915'
-webhook = OrderedWebhook(bot)
+
 
 def handle(self):
         # print(self)
@@ -31,9 +32,16 @@ def handle(self):
                 bot.sendMessage(chat_id, command[12:])
         else:
           bot.sendMessage(chat_id, "Hi! thanks for your message. Your message is " + self['text'])
-        
+webhook = OrderedWebhook(bot, handle)
+app = Flask(__name__)
 
-webhook(bot, handle).run_as_thread()
+@app.route('https://kamadonezuko.herokuapp.com/', methods=['GET', 'POST'])
+def pass_update():
+    webhook.feed(request.data)
+    return 'OK'
+
+
+webhook.run_as_thread()
 print ('Running...')
 
 # Keep the program running.
