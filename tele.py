@@ -19,11 +19,18 @@ def handle(self):
         content_type, chat_type, chat_id = telepot.glance(self)
 
         print("_+ Message arrived: " + self['text'])
-        command = msg['text'].strip().lower()
+        command = self['text'].strip().lower()
         if command ==  '/start':
-          self.sendMessage(chat_id, "Hi! thanks for your message. This bot still in developing mode")
+          bot.sendMessage(chat_id, "Hi! thanks for your message. This bot still in developing mode")
+        elif command == '/speed':
+                startTime = time.time()
+                elapseTime = time.time() - startTime
+                bot.sendMessage(chat_id, 'Bot speed took %s second' % str(elapseTime))
+        elif command.startswith('https://t.me/'):
+                bot.sendMessage(chat_id, command[12:])
         else:
-          self.sender.sendMessage(chat_id, "Hi! thanks for your message. Your message is " + self['text'])
+          bot.sendMessage(chat_id, "Hi! thanks for your message. Your message is " + self['text'])
+        
 
 MessageLoop(bot, handle).run_as_thread()
 print ('Running...')
