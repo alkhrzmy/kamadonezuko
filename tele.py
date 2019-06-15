@@ -8,11 +8,12 @@ Sample bot t.me/kamadobot
 '''
 import telepot
 import time
-from telepot.loop import MessageLoop
+from telepot.loop import MessageLoop, OrderedWebhook
 
 token = "844244943:AAGzMVzum7nTCrqLDr50Vccpu_ieco3RC30"
 bot = telepot.Bot(token)
 my_id = '694351915'
+webhook = OrderedWebhook(bot)
 
 def handle(self):
         # print(self)
@@ -32,7 +33,7 @@ def handle(self):
           bot.sendMessage(chat_id, "Hi! thanks for your message. Your message is " + self['text'])
         
 
-MessageLoop(bot, handle).run_as_thread()
+webhook(bot, handle).run_as_thread()
 print ('Running...')
 
 # Keep the program running.
