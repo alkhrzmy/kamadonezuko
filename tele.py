@@ -25,7 +25,7 @@ def handle(self):
         elif command == '/speed':
                 startTime = time.time()
                 elapseTime = time.time() - startTime
-                bot.sendMessage(chat_id, 'Bot speed took %s second' % str(elapseTime))
+                bot.sendMessage(chat_id, 'Bot speed took %f second' % elapseTime)
         elif command.startswith('https://t.me/'):
                 bot.sendMessage(chat_id, command[12:])
         else:
