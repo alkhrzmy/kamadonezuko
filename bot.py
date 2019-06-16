@@ -17,7 +17,7 @@ my_id = '694351915'
 
 def handle(self):
         # print(self)
-        content_type, chat_type, chat_id, message_id = telepot.glance(self)
+        content_type, chat_type, chat_id= telepot.glance(self)
 
         print("_+ Message arrived: " + self['text'])
         command = self['text'].strip().lower()
