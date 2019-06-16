@@ -27,7 +27,7 @@ def handle(self):
                         #pass
                 #else:
                         
-                        bot.sendMessage(chat_id, "thank you for sending me a message. This bot is under development by the creator. this is my creator => @rzmyy", reply_to_message_id=self['message_id'])
+                bot.sendMessage(chat_id, "thank you for sending me a message. This bot is under development by the creator. this is my creator => @rzmyy", reply_to_message_id=self['message_id'])
         elif command == '/speed':
           startTime = time.time()
           bot.sendMessage(chat_id, 'Counting bot speed...')
@@ -40,7 +40,7 @@ def handle(self):
                 timeRunning = time.time() - programStart
                 bot.sendMessage(chat_id, 'Bot already running '+format_timespan(timeRunning)+'\nBot response speed is %0.3f seconds\nBot is using Heroku Python 3.6.8' % elapseTime)
         elif command == '/get':
-                bot.sendMessage(chat_id, 'Chat type: %s\nChat id: %s\nContent type: %s'%(str(chat_type),chat_id,content_type)
+                bot.sendMessage(chat_id, 'Chat type: %s\nChat id: %s\nContent type: %s'%(str(chat_type),chat_id,content_type))
         else:
           bot.sendMessage(chat_id, "Hi! thanks for your message. Your message is " + self['text'])
 
