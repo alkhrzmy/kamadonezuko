@@ -34,7 +34,7 @@ def handle(self):
                 bot.sendMessage(chat_id, 'Please wait...')
                 elapseTime = time.time() - startTime
                 timeRunning = time.time() - programStart
-                bot.sendMessage(chat_id, 'Bot already running %f\nBot response speed is %f\nBot is using Heroku Python 3.6' % (format_timespan(timeRunning), elapseTime))
+                bot.sendMessage(chat_id, 'Bot already running '+format_timespan(timeRunning)+'\nBot response speed is %f\nBot is using Heroku Python 3.6.8' % elapseTime)
         else:
           bot.sendMessage(chat_id, "Hi! thanks for your message. Your message is " + self['text'])
 
