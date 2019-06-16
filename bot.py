@@ -18,12 +18,12 @@ my_id = '694351915'
 
 def handle(self):
         # print(self)
-        content_type, chat_type, chat_id= telepot.glance(self)
+        message_id, chat_type, chat_id= telepot.glance(self)
 
         print("_+ Message arrived: " + self['text'])
         command = self['text'].strip().lower()
         if command ==  '/start':
-          bot.sendMessage(chat_id, "Hi! thanks for your message. This bot still in developing mode")
+          bot.sendMessage(chat_id, "Hi! thanks for your message. This bot still in developing mode", reply_to_message_id=message_id)
         elif command == '/speed':
           startTime = time.time()
           bot.sendMessage(chat_id, 'Counting bot speed...')
