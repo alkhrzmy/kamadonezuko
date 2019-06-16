@@ -27,13 +27,13 @@ def handle(self):
           startTime = time.time()
           bot.sendMessage(chat_id, 'Counting bot speed...')
           elapseTime = time.time() - startTime
-          bot.sendMessage(chat_id, 'Bot speed took %f second' % elapseTime)
+          bot.sendMessage(chat_id, 'Speed sending message took %f second' % elapseTime)
         elif command == '/check':
                 startTime = time.time()
                 bot.sendMessage(chat_id, 'Please wait...')
                 elapseTime = time.time() - startTime
                 timeRunning = time.time() - programStart
-                bot.sendMessage(chat_id, 'Bot already running %f\nBot speed is %f\nBot is using Heroku Python 3.6' % (timeRunning, elapseTime))
+                bot.sendMessage(chat_id, 'Bot already running %f\nBot response speed is %f\nBot is using Heroku Python 3.6' % (format_timespan(timeRunning), elapseTime))
         else:
           bot.sendMessage(chat_id, "Hi! thanks for your message. Your message is " + self['text'])
 
