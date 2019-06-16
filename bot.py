@@ -8,6 +8,7 @@ Sample bot t.me/kamadobot
 '''
 import telepot
 import time
+from humanfriendly import format_timespan, format_size, format_number, format_length
 from telepot.loop import MessageLoop
 programStart = time.time()
 
