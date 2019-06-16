@@ -25,6 +25,7 @@ def handle(self):
           bot.sendMessage(chat_id, "Hi! thanks for your message. This bot still in developing mode")
         elif command == '/speed':
           startTime = time.time()
+        bot.sendMessage(chat_id, 'Counting bot speed...')
           elapseTime = time.time() - startTime
           bot.sendMessage(chat_id, 'Bot speed took %f second' % elapseTime)
         elif command == '/check':
