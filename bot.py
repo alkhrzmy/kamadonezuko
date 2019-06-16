@@ -23,11 +23,10 @@ def handle(self):
         print("_+ Message arrived: " + self['text'])
         command = self['text'].strip().lower()
         if command ==  '/start':
-                #if chat_type == 'group':
-                        #pass
-                #else:
-                        
-                bot.sendMessage(chat_id, "thank you for sending me a message. This bot is under development by the creator. this is my creator => @rzmyy", reply_to_message_id=self['message_id'])
+                if chat_type == 'supergroup' or chat_type == 'group':
+                        pass
+                else:
+                        bot.sendMessage(chat_id, "thank you for sending me a message. This bot is under development by the creator. this is my creator => @rzmyy", reply_to_message_id=self['message_id'])
         elif command == '/speed':
           startTime = time.time()
           bot.sendMessage(chat_id, 'Counting bot speed...')
